@@ -1,0 +1,25 @@
+{% extends 'entries/index.html' %}
+
+{% block content %}
+ <a href="{% url 'home' %}">Back to home</a>
+
+
+   <div class="card mb-4">
+          <div class="card-body">
+
+
+            <a href="#"> <h2 class="card-title">{{ object.title }}</h2></a>
+            <p class="card-text">{{ object.text }}</p>
+
+          </div>
+          <div class="card-footer text-muted">
+
+            <a href="#">Posted by {{ object.author }}</a>
+          </div>
+       <ul>
+       <a href="{% url 'post_edit' blog.pk %}">edit this post</a>,
+       <a href="{% url 'post_delete' blog.pk  %}" >Delete this post</a>
+           </ul>
+        </div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'entries/index.html' %}
+
+{% block content %}
+<div class="card mb-4">
+
+
+    <div class="card-header">
+    <a href="{% url 'newpost' %}">Add New Post</a>
+        </div>
+{% for arti in blog %}
+
+        <div class="card mb-4">
+
+          <div class="card-body">
+
+            <a href="{% url 'detail' arti.pk %}"> <h2 class="card-title">{{ arti.title }}</h2></a>
+            <p class="card-text">{{ arti.text|truncatechars:270 }}</p>
+            <a href="{% url 'detail' arti.pk %}" class="btn btn-primary">Read More &rarr;</a>
+          </div>
+          <div class="card-footer text-muted">
+            Posted on {{ arti.date }} by
+              <span class="text-info mr-2"> {{ arti.author }}</a></span>
+          </div>
+        </div>
+
+{% endfor %}
+  <div class="col-md-8">
+      <!-- Pagination -->
+      {% if is_paginated %}
+        <ul class="pagination justify-content-center mb-4">
+             {% if page_obj.has_previous %}
+          <li class="page-item">
+
+            <a class="page-link" href="?page{{ page_obj.previous_page_number }}">&larr; Older</a>
+          </li>
+            {% endif %}
+
+            {% if page_obj.has_next %}
+          <li class="page-item ">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next Page &rarr;</a>
+              {% endif %}
+          </li>
+        </ul>
+      {% endif %}
+      </div>
+{% endblock %}

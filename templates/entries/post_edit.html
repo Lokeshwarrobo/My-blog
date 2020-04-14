@@ -1,0 +1,30 @@
+{% extends 'entries/index.html' %}
+{% block content %}
+<div class="card mb-4">
+
+
+<div class="card-header">
+ <a href="#">Edit this Post</a>
+    </div>
+
+
+   <div class="card mb-4">
+
+          <div class="card-body">
+              <form action="" method="POST">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <input type="submit" value="Update">
+
+</form>
+
+
+
+          </div>
+
+        </div>
+
+
+{% endblock %}
